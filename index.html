@@ -131,6 +131,23 @@
 
   .rise{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
   .rise.in{opacity:1;transform:none}
+
+  /* ── 音乐按钮 ── */
+  .bgm{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:60;
+       width:46px;height:46px;border-radius:50%;border:1px solid rgba(180,144,90,.5);
+       background:rgba(255,252,247,.92);color:var(--gold);font-size:19px;line-height:1;
+       display:flex;align-items:center;justify-content:center;cursor:pointer;
+       box-shadow:0 8px 22px rgba(120,100,70,.18);
+       -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .bgm--hint{animation:bgmPulse 2.6s ease-in-out infinite}
+  .bgm--playing{animation:spin 5s linear infinite}
+  @keyframes bgmPulse{0%,100%{box-shadow:0 8px 22px rgba(120,100,70,.18)}
+                      50%{box-shadow:0 8px 26px rgba(180,144,90,.55)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .bgm__tip{position:fixed;right:70px;bottom:calc(24px + env(safe-area-inset-bottom));z-index:59;
+            background:rgba(43,42,38,.86);color:#F7F2EA;font-size:12px;padding:6px 10px;border-radius:6px;
+            opacity:0;transition:opacity .4s;pointer-events:none;white-space:nowrap}
+  .bgm__tip.on{opacity:1}
 </style>
 </head>
 <body>
@@ -265,6 +282,11 @@
   <div class="foot__names">潘宝澄 &amp; 凌萌</div>
   <div class="foot__date">2026 · 11 · 27 &nbsp;|&nbsp; 海口</div>
 </footer>
+
+<!-- 音乐 -->
+<audio id="bgm" src="./assets/music.mp3" loop preload="none"></audio>
+<button class="bgm bgm--hint" id="bgmBtn" aria-label="背景音乐">♪</button>
+<div class="bgm__tip" id="bgmTip">点一下放音乐</div>
 
 <!-- 灯箱 -->
 <div class="lb" id="lb">
@@ -428,6 +450,49 @@
     btn.textContent = '已复制 ✓';
     setTimeout(() => { btn.textContent = old; }, 1600);
   });
+
+  /* ── 背景音乐 ── */
+  (() => {
+    const audio = document.getElementById('bgm');
+    const btn = document.getElementById('bgmBtn');
+    const tip = document.getElementById('bgmTip');
+    let started = false, showedTip = false;
+
+    function markOn() {
+      btn.classList.add('bgm--playing');
+      btn.classList.remove('bgm--hint');
+      tip.classList.remove('on');
+    }
+
+    function play() {
+      audio.play().then(() => { started = true; markOn(); }).catch(() => {
+        if (!showedTip) {
+          showedTip = true;
+          tip.classList.add('on');
+          setTimeout(() => tip.classList.remove('on'), 3200);
+        }
+      });
+    }
+
+    play();
+    document.addEventListener('WeixinJSBridgeReady', () => { if (!started) play(); }, false);
+
+    const autoStart = () => {
+      if (!started) play();
+      if (started) {
+        document.removeEventListener('touchstart', autoStart);
+        document.removeEventListener('click', autoStart);
+      }
+    };
+    document.addEventListener('touchstart', autoStart, { passive: true });
+    document.addEventListener('click', autoStart);
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (audio.paused) play();
+      else { audio.pause(); btn.classList.remove('bgm--playing'); }
+    });
+  })();
 
   /* ── 滚动显现 ── */
   const io = new IntersectionObserver(entries => {
