@@ -1,4 +1,4 @@
-# 一键部署到 GitHub Pages
+﻿# 一键部署到 GitHub Pages
 # 用法：在 web 目录下右键「使用 PowerShell 运行」，或在终端执行 .\deploy.ps1
 
 $ErrorActionPreference = "Stop"
