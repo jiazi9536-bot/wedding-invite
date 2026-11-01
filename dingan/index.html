@@ -57,6 +57,16 @@
   .body-text p{margin:0 0 18px}
   .sign{margin-top:30px;text-align:right;font-family:var(--serif);color:var(--ink);letter-spacing:.12em}
 
+  /* ── 诚邀人 ── */
+  .host{margin-top:36px;text-align:center}
+  .host__line{font-family:var(--serif);font-size:18px;letter-spacing:.16em;color:var(--ink);line-height:2}
+  .host__line b{font-weight:400;color:#A8803F}
+  .host__heart{font-size:15px;letter-spacing:0;margin:0 2px}
+  .host__sub{margin-top:10px;font-size:13px;letter-spacing:.24em;color:var(--ink-3)}
+  .host__label{margin-top:28px;font-size:11px;letter-spacing:.4em;color:var(--gold);text-indent:.4em}
+  .host__parents{margin-top:14px;font-family:var(--serif);font-size:16px;letter-spacing:.14em;color:var(--ink);line-height:2.2}
+  .host__parents span{display:block}
+
   /* ── 倒计时 ── */
   .count{display:flex;justify-content:center;gap:10px;margin-top:34px}
   .count__item{flex:1;max-width:86px;background:var(--paper-2);border:1px solid rgba(180,144,90,.28);
@@ -175,7 +185,15 @@
     <p>从相遇到决定共度余生，我们一起走过了许多个平常的日子。那些一起吃过的饭、一起走过的路、一起熬过的夜，让我们越来越确定——就是你了。</p>
     <p>十一月二十八日傍晚，我们在定安的军坡场摆下喜宴。请你一定来，喝一杯，为我们的往后余生做个见证。</p>
   </div>
-  <div class="sign">潘宝澄 &amp; 凌萌 敬邀</div>
+  <div class="host">
+    <div class="host__line">小儿 <b>潘宝澄</b> <span class="host__heart">💕</span> 儿媳 <b>凌萌</b></div>
+    <div class="host__sub">举 行 婚 礼 · 幸 福 时 刻</div>
+    <div class="host__label">诚 邀 人</div>
+    <div class="host__parents">
+      <span>👨 父亲　潘 鸿</span>
+      <span>👩 母亲　王春玲</span>
+    </div>
+  </div>
 </section>
 
 <!-- 倒计时 -->
@@ -196,7 +214,7 @@
   <h2 class="title">婚礼信息</h2>
   <div class="info">
     <div class="info__row"><div class="info__k">日期</div><div class="info__v">2026 年 11 月 28 日 · 星期六<small>农历 十月二十</small></div></div>
-    <div class="info__row"><div class="info__k">时间</div><div class="info__v">16:30 签到 · 17:00 开席<small>19:00 合影 · 19:30 礼成</small></div></div>
+    <div class="info__row"><div class="info__k">时间</div><div class="info__v">17:00 开席<small>下午五点 · 16:30 起恭候入席</small></div></div>
     <div class="info__row"><div class="info__k">地点</div><div class="info__v">定安县岭口镇 · 儒沐塘村委会军坡场<small>海南省定安县岭口镇儒沐塘村</small></div></div>
   </div>
   <a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:20px"
@@ -207,17 +225,13 @@
 <!-- 主图 -->
 <div class="still rise"><img src="../assets/photo-1-lace.jpg" alt=""></div>
 
-<!-- 流程 -->
+<!-- 开席时间 -->
 <section class="sec rise">
-  <div class="label">SCHEDULE</div>
-  <h2 class="title">婚礼流程</h2>
-  <div class="tl">
-    <div class="tl__item"><div class="tl__time">16:30</div><div class="tl__title">宾客签到</div><div class="tl__desc">签到台恭候，领取席位卡后请依次入席</div></div>
-    <div class="tl__item"><div class="tl__time">17:00</div><div class="tl__title">喜宴开席</div><div class="tl__desc">喜宴正式开席，敬请凭席位卡入座</div></div>
-    <div class="tl__item"><div class="tl__time">17:40</div><div class="tl__title">新人敬酒</div><div class="tl__desc">新人依席敬酒，谨致谢意</div></div>
-    <div class="tl__item"><div class="tl__time">19:00</div><div class="tl__title">合影留念</div><div class="tl__desc">移步合影区，与新人合影留念</div></div>
-    <div class="tl__item"><div class="tl__time">19:30</div><div class="tl__title">礼成</div><div class="tl__desc">喜宴圆满，恭送宾客</div></div>
-  </div>
+  <div class="label">TIME</div>
+  <h2 class="title">下午五点开席</h2>
+  <p style="margin:18px 0 0;text-align:center;font-size:13px;color:var(--ink-3);letter-spacing:.2em;line-height:1.9">
+    敬请准时入席 · 共饮一杯喜酒
+  </p>
 </section>
 
 <!-- 温馨提示 -->
